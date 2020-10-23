@@ -40,16 +40,6 @@ struct Info: Decodable {
 }
 
 
-struct Test {
-    let id: String
-    var test: [Ifo]
-}
-
-struct Ifo {
-    let url: String
-    let name: String
-    let desc: String
-}
 
 
 

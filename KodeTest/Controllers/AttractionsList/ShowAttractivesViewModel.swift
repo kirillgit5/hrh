@@ -17,9 +17,9 @@ protocol AttractionsListViewModelProtocol {
 
 class AttractionsListViewModel: AttractionsListViewModelProtocol {
     
-    
     private let attractions: [Attarction]
     private let city: City
+    
     required init(city: City) {
         self.city = city
         if let attractions = city.attractions?.allObjects as? [Attarction] {

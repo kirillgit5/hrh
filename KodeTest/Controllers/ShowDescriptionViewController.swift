@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShowDescriptionViewController: UIViewController {
+class ShowDescriptionViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet var textView: UITextView!
     
@@ -16,6 +16,11 @@ class ShowDescriptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.text = fullDescription
+        textView.delegate = self
+    }
+    
+     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool  {
+        false
     }
 
 }

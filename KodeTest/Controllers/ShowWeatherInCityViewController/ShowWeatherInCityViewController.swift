@@ -11,18 +11,19 @@ import MapKit
 
 class ShowWeatherInCityViewController: UIViewController {
     
+    //MARK: - IB Outlets
     @IBOutlet var map: MKMapView!
     @IBOutlet var currentDateLabel: UILabel!
     @IBOutlet var tomorrowDateLabel: UILabel!
     @IBOutlet var cityNameLabel: UILabel!
     @IBOutlet var currentWeatherCollectioView: UICollectionView!
     @IBOutlet var tomorrowWeatherCollectionView: UICollectionView!
-    
     @IBOutlet var attractionsButton: UIButton!
     
+    //MARK: - Public Property
     var viewModel: ShowWeatherInCityViewModelProtocol!
     
-    
+    //MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         designViews()
@@ -86,7 +87,7 @@ class ShowWeatherInCityViewController: UIViewController {
         customizeBackButton()
     }
     
-    
+    //MARK: - IB Actions
     @IBAction func showAttrections(_ sender: Any) {
         performSegue(withIdentifier: SegueIdentifiers.showAttrections.rawValue, sender: viewModel.getViewModelForAttrectiveVC())
     }
@@ -94,12 +95,7 @@ class ShowWeatherInCityViewController: UIViewController {
     
 }
 
-//MARK: - UICollectionViewDelegate
-extension ShowWeatherInCityViewController: UICollectionViewDelegate {
-    
-    
-}
-
+//MARK: - UICollectionViewDataSource
 extension ShowWeatherInCityViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView === currentWeatherCollectioView {

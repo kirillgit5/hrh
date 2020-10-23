@@ -8,8 +8,6 @@
 
 import Foundation
 
-//https://api.openweathermap.org/data/2.5/onecall? &exclude=daily&units=metric&appid=46cc44230e059fbc146fc9eb96d659ae
-
 class NetworkService {
     
     enum SearchType {
@@ -41,7 +39,6 @@ class NetworkService {
         }.resume()
     }
     
-    
     private func createURL(body: String, searchType: NetworkService.SearchType) -> URL? {
         switch  searchType {
         case .cities:
@@ -61,11 +58,5 @@ class NetworkService {
             guard let url = URL(string: urlString.encodeUrl) else { return nil }
             return url
         }
-        
-        
     }
-    
-    
-    
-    
 }

@@ -36,7 +36,7 @@ class SearchCityFooter: UITableViewHeaderFooterView {
     private func setupViewsDesign() {
         nameLabel.font = UIFont(name: "system", size: 25)
         nameLabel.textColor = .lightGray
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = #colorLiteral(red: 0.05103711039, green: 0.07067776471, blue: 0.0710445717, alpha: 1)
     }
 }
 

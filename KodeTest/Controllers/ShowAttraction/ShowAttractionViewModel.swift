@@ -11,19 +11,20 @@ import MapKit
 import CoreData
 
 protocol ShowAttractionViewModelProtocol {
+    var nameForReadMoreButton: Box<String> { get }
     init(attractive: Attarction)
     func getImageURLString() -> String
     func getAttractiveName() -> String
     func getDescription() -> String
     func getLocation() -> LocationMap
-    func getFullDescription() -> String
 }
 
 class ShowAttractionViewModel: ShowAttractionViewModelProtocol {
     
-    
-    
     private let attractive: Attarction
+    private var showFullDescription = false
+    var nameForReadMoreButton: Box<String> = Box(value: "Читать дальше")
+    
     required init(attractive: Attarction) {
         self.attractive = attractive
     }
@@ -33,7 +34,15 @@ class ShowAttractionViewModel: ShowAttractionViewModelProtocol {
     }
     
     func getDescription() -> String {
-        attractive.desc ?? ""
+        if !showFullDescription {
+            showFullDescription = true
+            nameForReadMoreButton.value = "Читать дальше"
+            return attractive.desc ?? ""
+        } else {
+            showFullDescription = false
+             nameForReadMoreButton.value = "Свернуть"
+            return attractive.descfull ?? ""
+        }
     }
     
     func getImageURLString() -> String {
@@ -41,13 +50,9 @@ class ShowAttractionViewModel: ShowAttractionViewModelProtocol {
     }
     
     func getLocation() -> LocationMap {
-        print(attractive.lan, " attractive.lan ")
-        print(attractive.lon, " attractive.lon")
         return LocationMap(lat: attractive.lan, lng: attractive.lon)
     }
     
-    func getFullDescription() -> String {
-        attractive.descfull ?? ""
-    }
+    
     
 }

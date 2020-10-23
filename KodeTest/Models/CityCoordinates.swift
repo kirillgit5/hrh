@@ -31,7 +31,6 @@ struct Location: Codable {
        }
 }
 
-
 struct CityCoordinates {
     let name: String
     let lat: Double

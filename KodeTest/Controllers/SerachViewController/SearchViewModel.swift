@@ -17,7 +17,7 @@ protocol SearchViewModelProtocol {
     func lookCity(indexPath: IndexPath, complition: @escaping ((ShowWeatherInCityViewModelProtocol) -> Void))
     func isTableViewNeedReload(text: String,newText: String) -> Bool
     func reloadRecentlyRequest()
-    
+    func getIsSearchBarEmpty() -> Bool
 }
 
 class SearchViewModel: SearchViewModelProtocol {
@@ -28,14 +28,16 @@ class SearchViewModel: SearchViewModelProtocol {
     //MARK: - Services
     private let networkDataFetcher = NetworkDataFetcher()
     private let storageManager = StorageManager.shared
+    
+    //MARK: - Private Property
     private var cities: [CityResponse] = []
     private var recentRequests: [RecentRequest] = []
     private var isSearchBarEmpty = true
     private var isSearchCity = false
     
+    //MARK: - Public Methods
     func setTextForSearch(text: String?, complition: @escaping (() -> Void) ) {
         guard let text = text else { complition() ; return }
-        
         networkDataFetcher.getData(text: text, searchType: NetworkService.SearchType.cities, decodeType: Predictions.self) { (decodable) in
             if let prediction = decodable {
                 print(prediction)
@@ -123,11 +125,14 @@ class SearchViewModel: SearchViewModelProtocol {
             titleForSection.value = ""
             return true
         }
-        
-        
         return false
     }
     
+    func getIsSearchBarEmpty() -> Bool {
+        return isSearchBarEmpty
+    }
+    
+    //MARK: - Private Methods
     private func createShowWeatherInCityViewModel(name: String, lat: Double, lng: Double, id: String) -> ShowWeatherInCityViewModelProtocol {
         let cityCoordinates = CityCoordinates(name: name, lat: lat, lng: lng, id: id)
         let viewModel = ShowWeatherInCityViewModel(cityCoordinates: cityCoordinates)

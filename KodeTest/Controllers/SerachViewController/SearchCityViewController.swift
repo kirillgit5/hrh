@@ -8,20 +8,20 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class SearchCityViewController: UITableViewController {
+    
+    @IBOutlet var textField: UITextField!
+    @IBOutlet var cancleButton: UIButton!
     
     
-    @IBOutlet var searchBar: UISearchBar!
-    
-    //MARK: Private Property
+    //MARK: - Private Property
     private let viewModel: SearchViewModelProtocol = SearchViewModel()
     private let cellId = "SearchCell"
     
-    //MARK: Override Methods
+    //MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
-        setupDesign()
+        textField.delegate = self
         tableView.register(SearchCityFooter.self, forHeaderFooterViewReuseIdentifier: SearchCityFooter.identifier)
     }
     
@@ -39,6 +39,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SearchCityCell
         cell.nameCityLabel.text = viewModel.getCityNameForCell(at: indexPath)
+        cell.nameCityLabel.textColor = viewModel.getIsSearchBarEmpty() ? .lightGray : .white
         return cell
     }
     
@@ -74,43 +75,31 @@ class ViewController: UITableViewController {
         showWeatherVC.viewModel = viewModel
     }
     
-    //MARK: Private Methods
-    private func setupDesign() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        guard let button = searchBar.value(forKey: "cancelButton") as? UIButton else { return }
-        button.setTitle("Отмена", for: .normal)
-        button.tintColor = .systemGray
+    //MARK:- Selectors
+    @IBAction func cancelSearch(_ sender: Any) {
+        textField.resignFirstResponder()
     }
     
     
 }
 
-//MARK: UISearchBarDelegate
-extension ViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.setTextForSearch(text: searchBar.text) {[unowned self] in
+//MARK: - UITextFieldDelegate
+extension SearchCityViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        viewModel.setTextForSearch(text: textField.text) {[unowned self] in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        if viewModel.isTableViewNeedReload(text: searchBar.text ?? "", newText: text) {
-            tableView.reloadData()
-        }
-        
         return true
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if viewModel.isTableViewNeedReload(text: textField.text ?? "", newText: string) {
+            tableView.reloadData()
+        }
+        return true
     }
-    
-    
 }
 
 

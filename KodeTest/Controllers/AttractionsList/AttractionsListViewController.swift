@@ -11,8 +11,8 @@ import UIKit
 
 class AttractionsListViewController: UIViewController {
     
-    
     @IBOutlet var collectionView: UICollectionView!
+    
     var viewModel: AttractionsListViewModelProtocol!
     
     //MARK: - Override Method
@@ -38,6 +38,7 @@ class AttractionsListViewController: UIViewController {
     
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension AttractionsListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width - 40, height: 219)

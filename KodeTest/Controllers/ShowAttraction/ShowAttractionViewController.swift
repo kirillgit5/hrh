@@ -17,6 +17,8 @@ class ShowAttractionViewController: UIViewController {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var contentViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var readMoreButton: UIButton!
     
     //MARK: - Public Property
     var viewModel: ShowAttractionViewModelProtocol!
@@ -29,15 +31,16 @@ class ShowAttractionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showInMap" {
-        guard let mapVC = segue.destination as? AttractionInMapViewController else { return }
-        guard let location = sender as? LocationMap else { return }
-        mapVC.location = location
+            guard let mapVC = segue.destination as? AttractionInMapViewController else { return }
+            guard let location = sender as? LocationMap else { return }
+            mapVC.location = location
         } else {
             guard let descVC = segue.destination as? ShowDescriptionViewController else { return }
             guard let desc = sender as? String else { return }
             descVC.fullDescription = desc
         }
     }
+    
     
     //MARL: - Private Methods
     private func setupContentInViews() {
@@ -46,6 +49,9 @@ class ShowAttractionViewController: UIViewController {
         nameLabel.text = viewModel.getAttractiveName()
         descriptionLabel.text = viewModel.getDescription()
         title = viewModel.getAttractiveName()
+        viewModel.nameForReadMoreButton.bind {[unowned self] (name) in
+            self.readMoreButton.setTitle(name, for: .normal)
+        }
         setRegion()
         createAnnotation()
     }
@@ -71,8 +77,13 @@ class ShowAttractionViewController: UIViewController {
     
     //MARK: - Selectors
     @IBAction func readMore(_ sender: Any) {
-        let desc = viewModel.getFullDescription()
-        performSegue(withIdentifier: SegueIdentifiers.ShowDescription.rawValue, sender: desc)
+        let desc = viewModel.getDescription()
+        self.descriptionLabel.text = desc
+        let oldheight = descriptionLabel.frame.height
+        let oldheightContentView = contentViewHeightConstraint.constant
+        view.layoutIfNeeded()
+        let newHeight = descriptionLabel.frame.height
+        contentViewHeightConstraint.constant = oldheightContentView + newHeight - oldheight
     }
     @IBAction func showInMap(_ sender: Any) {
         let location = viewModel.getLocation()

@@ -33,9 +33,10 @@
 		EE538C322540C3E4009E534B /* ShowDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE538C312540C3E4009E534B /* ShowDescriptionViewController.swift */; };
 		EE538C342540C88F009E534B /* Extension + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE538C332540C88F009E534B /* Extension + UIViewController.swift */; };
 		EE538C362541637F009E534B /* AttractiveForSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE538C352541637F009E534B /* AttractiveForSave.swift */; };
+		EE7176F525433DF300C40090 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7176F425433DF300C40090 /* SearchTextField.swift */; };
 		EE7271ED2538D77300656AF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7271EC2538D77300656AF3 /* AppDelegate.swift */; };
 		EE7271EF2538D77300656AF3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7271EE2538D77300656AF3 /* SceneDelegate.swift */; };
-		EE7271F12538D77300656AF3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7271F02538D77300656AF3 /* ViewController.swift */; };
+		EE7271F12538D77300656AF3 /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7271F02538D77300656AF3 /* SearchCityViewController.swift */; };
 		EE7271F42538D77300656AF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE7271F22538D77300656AF3 /* Main.storyboard */; };
 		EE7271F62538D77500656AF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE7271F52538D77500656AF3 /* Assets.xcassets */; };
 		EE7271F92538D77500656AF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE7271F72538D77500656AF3 /* LaunchScreen.storyboard */; };
@@ -89,10 +90,11 @@
 		EE538C352541637F009E534B /* AttractiveForSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractiveForSave.swift; sourceTree = "<group>"; };
 		EE7176F22542E2E700C40090 /* CityAttraction 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CityAttraction 4.xcdatamodel"; sourceTree = "<group>"; };
 		EE7176F32542E5AF00C40090 /* CityAttraction 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "CityAttraction 5.xcdatamodel"; sourceTree = "<group>"; };
+		EE7176F425433DF300C40090 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		EE7271E92538D77300656AF3 /* KodeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KodeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE7271EC2538D77300656AF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE7271EE2538D77300656AF3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EE7271F02538D77300656AF3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EE7271F02538D77300656AF3 /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
 		EE7271F32538D77300656AF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EE7271F52538D77500656AF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE7271F82538D77500656AF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				EE538C21253F3C43009E534B /* GradientView.swift */,
+				EE7176F425433DF300C40090 /* SearchTextField.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -273,7 +276,7 @@
 		EE7272002538ECDD00656AF3 /* SerachViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EE7271F02538D77300656AF3 /* ViewController.swift */,
+				EE7271F02538D77300656AF3 /* SearchCityViewController.swift */,
 				EE7272012538ED1400656AF3 /* SearchViewModel.swift */,
 			);
 			path = SerachViewController;
@@ -455,6 +458,7 @@
 				EE538C07253D62FE009E534B /* AttrectionViewCell.swift in Sources */,
 				EE7272132539C54600656AF3 /* DataManager.swift in Sources */,
 				EE538C0F253D6C30009E534B /* CityAttraction.xcdatamodeld in Sources */,
+				EE7176F525433DF300C40090 /* SearchTextField.swift in Sources */,
 				EE538C03253B6FA1009E534B /* WeatherCellViewModel.swift in Sources */,
 				EE538C1A253E24D7009E534B /* ShowAttractivesViewModel.swift in Sources */,
 				EE72721B2539F51300656AF3 /* ShowWeatherInCityViewController.swift in Sources */,
@@ -472,7 +476,7 @@
 				EE538C25253F6A35009E534B /* ShowAttractionViewController.swift in Sources */,
 				EE538C22253F3C43009E534B /* GradientView.swift in Sources */,
 				EE727220253A04DF00656AF3 /* MapLocation.swift in Sources */,
-				EE7271F12538D77300656AF3 /* ViewController.swift in Sources */,
+				EE7271F12538D77300656AF3 /* SearchCityViewController.swift in Sources */,
 				EE538C2C25401D41009E534B /* ShowAttractionViewModel.swift in Sources */,
 				EE7271ED2538D77300656AF3 /* AppDelegate.swift in Sources */,
 				EE72720D2539A80900656AF3 /* Boxing.swift in Sources */,

@@ -13,6 +13,7 @@ class StorageManager {
     
     static let shared = StorageManager()
     
+    //MARK: - Private Property
     private let dataManager = DataManager()
     private let networkFetcher = NetworkDataFetcher()
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -31,8 +32,10 @@ class StorageManager {
         persistentContainer.viewContext
     }()
     
+    //MARK: - Init
     private init() {}
     
+    //MARK:  Public Methods
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -47,14 +50,15 @@ class StorageManager {
     
     func createAttractions() {
         
-        
         for (cityID, attractions) in dataManager.attractionsBeta {
             guard let entityDescription = NSEntityDescription.entity(forEntityName: "City", in: self.managedObjectContext) else { return }
             guard let city = NSManagedObject(entity: entityDescription, insertInto: self.managedObjectContext) as? City else { return }
             city.id = cityID
+            
             for attraction in attractions {
                 guard let entityDescription = NSEntityDescription.entity(forEntityName: "Attarction", in: self.managedObjectContext) else { return }
                 guard let attractionEntity = NSManagedObject(entity: entityDescription, insertInto: self.managedObjectContext) as? Attarction else { return }
+                
                 attractionEntity.name = attraction.name
                 attractionEntity.city = city
                 attractionEntity.desc = attraction.desc
@@ -65,9 +69,7 @@ class StorageManager {
                 city.attractions?.adding(attractionEntity)
             }
         }
-        
         saveManagedObjectContext()
-        
     }
     
     func getCityForID(id: String) -> City? {
@@ -94,10 +96,10 @@ class StorageManager {
         guard let resultsRequest = try? self.managedObjectContext.fetch(fetchRequest) else { return }
         guard  var  requests =  resultsRequest as? [RecentRequest] else { return }
         
-        for i in 0...requests.count - 1 {
-            if requests[i].id == id {
+        for request in requests {
+            if request.id == id {
+                request.date = Date()
                 saveManagedObjectContext()
-                requests[i].date = Date()
                 return
             }
         }
@@ -143,48 +145,3 @@ class StorageManager {
 }
 
 
-
-//        DispatchQueue.global(qos: .utility).async { [unowned self] in
-//            for  (placeID, atractiveIDs) in DataManager().getAttractive() {
-//                guard let entityDescription = NSEntityDescription.entity(forEntityName: "City", in: self.managedObjectContext) else { return }
-//                guard let city = NSManagedObject(entity: entityDescription, insertInto: self.managedObjectContext) as? City else { return }
-//                city.id = placeID
-//                sleep(3)
-//                for attrcativeID in atractiveIDs {
-//                    self.networkFetcher.getData(text: attrcativeID, searchType: NetworkService.SearchType.attractive, decodeType: Attractive.self) {[unowned self]  (decodable) in
-//                        guard let decodableQ = decodable else { return }
-//                        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Attarction", in: self.managedObjectContext) else { return }
-//                        guard let attraction = NSManagedObject(entity: entityDescription, insertInto: self.managedObjectContext) as? Attarction else { return }
-//                        attraction.city = city
-//
-//                        attraction.imageURL = decodableQ.preview.source
-//                        attraction.lan = decodableQ.point.lat
-//                        attraction.lon = decodableQ.point.lon
-//                        attraction.name = decodableQ.name
-//
-//                        let words = decodableQ.info.text.countingWords()
-//
-//                        if words.count > 15 {
-//                            var desc = ""
-//                            for word in words {
-//                                desc += word + " "
-//                            }
-//                            attraction.desc = desc
-//                            attraction.descfull = decodableQ.info.text
-//                        } else {
-//                            attraction.desc = decodableQ.info.text
-//                            attraction.descfull = ""
-//                        }
-//                        city.attractions?.adding(attraction)
-//
-//                        do {
-//                            try self.managedObjectContext.save()
-//                        } catch let error {
-//                            print(error.localizedDescription)
-//                        }
-//
-//                    }
-//                }
-//
-//            }
-//        }

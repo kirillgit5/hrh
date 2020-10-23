@@ -16,8 +16,6 @@ struct  CityResponse: Decodable {
            case description
            case id = "place_id"
        }
-    
-    
 }
 
 struct Predictions: Decodable {
