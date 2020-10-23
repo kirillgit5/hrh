@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8CA101E724DC8BF6F59D82D0 /* Pods_KodeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D54218B195606EE4B1A35E /* Pods_KodeTest.framework */; };
 		EE538BF7253B247B009E534B /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE538BF5253B247B009E534B /* WeatherCollectionViewCell.swift */; };
 		EE538BF8253B247B009E534B /* WeatherCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE538BF6253B247B009E534B /* WeatherCollectionViewCell.xib */; };
 		EE538BFB253B2916009E534B /* Extension + Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE538BFA253B2916009E534B /* Extension + Date.swift */; };
@@ -58,9 +57,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		53D54218B195606EE4B1A35E /* Pods_KodeTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KodeTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C7603235ED2F0B01C1EC17D /* Pods-KodeTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KodeTest.release.xcconfig"; path = "Target Support Files/Pods-KodeTest/Pods-KodeTest.release.xcconfig"; sourceTree = "<group>"; };
-		E72A9DD45A28160C41FF41A1 /* Pods-KodeTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KodeTest.debug.xcconfig"; path = "Target Support Files/Pods-KodeTest/Pods-KodeTest.debug.xcconfig"; sourceTree = "<group>"; };
 		EE538BF5253B247B009E534B /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE538BF6253B247B009E534B /* WeatherCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCollectionViewCell.xib; sourceTree = "<group>"; };
 		EE538BFA253B2916009E534B /* Extension + Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + Date.swift"; sourceTree = "<group>"; };
@@ -121,26 +117,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CA101E724DC8BF6F59D82D0 /* Pods_KodeTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		581D73FCD48010D1704CA1F5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				53D54218B195606EE4B1A35E /* Pods_KodeTest.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		67CF8E9E834CE0588BD5B2A8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E72A9DD45A28160C41FF41A1 /* Pods-KodeTest.debug.xcconfig */,
-				9C7603235ED2F0B01C1EC17D /* Pods-KodeTest.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -240,7 +225,6 @@
 				EE7271EB2538D77300656AF3 /* KodeTest */,
 				EE7271EA2538D77300656AF3 /* Products */,
 				67CF8E9E834CE0588BD5B2A8 /* Pods */,
-				581D73FCD48010D1704CA1F5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -337,11 +321,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE7271FD2538D77500656AF3 /* Build configuration list for PBXNativeTarget "KodeTest" */;
 			buildPhases = (
-				5865CB39EF946E59FC04C812 /* [CP] Check Pods Manifest.lock */,
 				EE7271E52538D77300656AF3 /* Sources */,
 				EE7271E62538D77300656AF3 /* Frameworks */,
 				EE7271E72538D77300656AF3 /* Resources */,
-				8D5B9A8EEE044E8FE87F3421 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -399,48 +381,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		5865CB39EF946E59FC04C812 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-KodeTest-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D5B9A8EEE044E8FE87F3421 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KodeTest/Pods-KodeTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-KodeTest/Pods-KodeTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KodeTest/Pods-KodeTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EE7271E52538D77300656AF3 /* Sources */ = {
@@ -630,7 +570,6 @@
 		};
 		EE7271FE2538D77500656AF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E72A9DD45A28160C41FF41A1 /* Pods-KodeTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -648,7 +587,6 @@
 		};
 		EE7271FF2538D77500656AF3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C7603235ED2F0B01C1EC17D /* Pods-KodeTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
